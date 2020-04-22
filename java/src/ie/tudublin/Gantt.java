@@ -6,6 +6,7 @@ import processing.data.TableRow;
 
 import java.util.ArrayList;
 
+
 public class Gantt extends PApplet
 {	
 	ArrayList<Task> tasks = new ArrayList<Task>();
@@ -22,6 +23,8 @@ public class Gantt extends PApplet
 
 		taskDesc = width * 0.02f;
 		chartBorder = width * 0.1f;
+
+		w = width * 0.3f;
 	}//end settings
 
 	public void loadTasks()
@@ -49,6 +52,7 @@ public class Gantt extends PApplet
 	{
 		int vertGap = 30;
 		h = 20;
+		int taskNum = 0;
 
 		//loops through array list to display each task
 		for(Task t:tasks)
@@ -60,9 +64,12 @@ public class Gantt extends PApplet
 			float itemX = map(t.getStart(), 1, 31, chartBorder, width - 15);
 			float itemY = map(itemWidth, 1, 30, chartBorder, width - 15);
 			
-			rect(itemX, vertGap - 15, itemY, h);
+			fill(map(taskNum, 0, tasks.size(), 0, 255), 255, 255);
+
+			rect(itemX, vertGap - 15, itemY, h, 4);
 			
 			vertGap += 30;
+			taskNum++;
 			/* System.out.println(itemWidth);
 			System.out.println(itemX);
 			System.out.println(itemY); */
@@ -81,6 +88,14 @@ public class Gantt extends PApplet
 	public void mousePressed()
 	{
 		println("Mouse pressed");	
+		for(int i = 0; i < tasks.size(); i++)
+		{
+			float changeYVal = map(i, 0, tasks.size(), chartBorder, height - chartBorder);
+			if(mouseX > chartBorder && mouseX < width && mouseY > changeYVal && mouseY < changeYVal)
+			{
+				
+			}
+		}
 	}//end mousePressed
 
 	public void mouseDragged()
