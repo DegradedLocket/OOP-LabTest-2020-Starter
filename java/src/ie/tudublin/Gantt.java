@@ -18,10 +18,10 @@ public class Gantt extends PApplet
 
 	public void settings()
 	{
-		size(800, 600);
+		size(1024, 900);
 
 		taskDesc = width * 0.02f;
-		chartBorder = width * 0.5f;
+		chartBorder = width * 0.1f;
 	}//end settings
 
 	public void loadTasks()
@@ -48,13 +48,23 @@ public class Gantt extends PApplet
 	public void displayTasks()
 	{
 		int vertGap = 30;
+		h = 10;
+
 		//loops through array list to display each task
 		for(Task t:tasks)
 		{
 			text(t.getTask(), taskDesc, vertGap);
+			rect(t.getStart() + chartBorder , vertGap, (t.getEnd() - t.getStart()) , h);
 
 			vertGap += 30;
 		}
+
+		//using map to display chart
+		/* for (int i = 0; i < chartBorder; i++)
+		{
+			float ganttMap = map(i, 30, chartBorder, width);
+
+		} */
 	}//end displayTasks
 	
 	public void mousePressed()
