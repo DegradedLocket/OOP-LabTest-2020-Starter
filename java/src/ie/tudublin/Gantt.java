@@ -61,8 +61,8 @@ public class Gantt extends PApplet
 			
 			//rect(t.getStart() + chartBorder , vertGap, (t.getEnd() - t.getStart()) , h);
 			float itemWidth = t.getEnd() - t.getStart();
-			float itemX = map(t.getStart(), 1, 31, chartBorder, width - 15);
-			float itemY = map(itemWidth, 1, 30, chartBorder, width - 15);
+			float itemX = map(t.getStart(), 0, 30, chartBorder, width - 15);
+			float itemY = map(itemWidth, 0, 30, 0, width - chartBorder);
 			
 			fill(map(taskNum, 0, tasks.size(), 0, 255), 255, 255);
 
@@ -78,7 +78,7 @@ public class Gantt extends PApplet
 		//for loop to display the numbers above the Gantt chart
 		for (int i = 1; i < 31; i++)
 		{
-			float ganttMap = map(i, 1, 30, chartBorder, width - 15);
+			float ganttMap = map(i, 0, 30, chartBorder, width - 15);
 
 			text(i, ganttMap, 10);
 			//System.out.println(ganttMap);	
@@ -87,7 +87,7 @@ public class Gantt extends PApplet
 	
 	public void mousePressed()
 	{
-		println("Mouse pressed");	
+		/* println("Mouse pressed");	
 		for(int i = 0; i < tasks.size(); i++)
 		{
 			float changeYVal = map(i, 0, tasks.size(), chartBorder, height - chartBorder);
@@ -95,7 +95,7 @@ public class Gantt extends PApplet
 			{
 				
 			}
-		}
+		} */
 	}//end mousePressed
 
 	public void mouseDragged()
