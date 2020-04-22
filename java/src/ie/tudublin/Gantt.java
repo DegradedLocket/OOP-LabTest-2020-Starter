@@ -35,6 +35,14 @@ public class Gantt extends PApplet
 			System.out.println(t);
 		}
 	}
+
+	public void displayTasks()
+	{
+		for(int i = 0; i < tasks.size(); i++)
+		{
+			Task t = tasks.get(i);
+		}
+	}
 	
 	public void mousePressed()
 	{
@@ -46,12 +54,11 @@ public class Gantt extends PApplet
 		println("Mouse dragged");
 	}
 
-	
-	
 	public void setup() 
 	{
 		loadTasks();
 		printTasks();
+		colorMode(HSB);
 	}
 	
 	public void draw()
