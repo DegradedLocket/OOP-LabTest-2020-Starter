@@ -87,15 +87,23 @@ public class Gantt extends PApplet
 	
 	public void mousePressed()
 	{
-		/* println("Mouse pressed");	
+		println("Mouse pressed");	
 		for(int i = 0; i < tasks.size(); i++)
 		{
 			float changeYVal = map(i, 0, tasks.size(), chartBorder, height - chartBorder);
 			if(mouseX > chartBorder && mouseX < width && mouseY > changeYVal && mouseY < changeYVal)
 			{
-				
+				 Task alterTask = tasks.get(i);
+
+				float itemWidth = alterTask.getEnd() - alterTask.getStart();
+				float itemX = map(alterTask.getStart(), 0, 30, chartBorder, width - 15);
+				float itemY = map(itemWidth, 0, 30, 0, width - chartBorder);
+			
+				fill(map(i, 0, tasks.size(), 0, 255), 255, 255);
+
+				rect(itemX, (i * 30) - 15, itemY + mouseX, h, 4);
 			}
-		} */
+		}
 	}//end mousePressed
 
 	public void mouseDragged()
