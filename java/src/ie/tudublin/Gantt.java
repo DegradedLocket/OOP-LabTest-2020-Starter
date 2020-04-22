@@ -18,7 +18,7 @@ public class Gantt extends PApplet
 
 	public void settings()
 	{
-		size(1024, 900);
+		size(1200, 1200);
 
 		taskDesc = width * 0.02f;
 		chartBorder = width * 0.1f;
@@ -48,24 +48,33 @@ public class Gantt extends PApplet
 	public void displayTasks()
 	{
 		int vertGap = 30;
-		h = 10;
+		h = 20;
 
 		//loops through array list to display each task
 		for(Task t:tasks)
 		{
 			text(t.getTask(), taskDesc, vertGap);
+			
 			//rect(t.getStart() + chartBorder , vertGap, (t.getEnd() - t.getStart()) , h);
-			rect(map(t.getStart(), 1, 31, chartBorder, width), vertGap, map((t.getEnd() - t.getStart()), 1, 31, chartBorder, width), h);
+			float itemWidth = t.getEnd() - t.getStart();
+			float itemX = map(t.getStart(), 1, 31, chartBorder, width - 15);
+			float itemY = map(itemWidth, 1, 30, chartBorder, width - 15);
+			
+			rect(itemX, vertGap - 15, itemY, h);
 			
 			vertGap += 30;
+			/* System.out.println(itemWidth);
+			System.out.println(itemX);
+			System.out.println(itemY); */
 		}
 
 		//for loop to display the numbers above the Gantt chart
 		for (int i = 1; i < 31; i++)
 		{
-			float ganttMap = map(i, 1, 31, chartBorder, width);
+			float ganttMap = map(i, 1, 30, chartBorder, width - 15);
 
-			text(i, ganttMap, 10);	
+			text(i, ganttMap, 10);
+			//System.out.println(ganttMap);	
 		}
 	}//end displayTasks
 	
