@@ -54,17 +54,19 @@ public class Gantt extends PApplet
 		for(Task t:tasks)
 		{
 			text(t.getTask(), taskDesc, vertGap);
-			rect(t.getStart() + chartBorder , vertGap, (t.getEnd() - t.getStart()) , h);
-
+			//rect(t.getStart() + chartBorder , vertGap, (t.getEnd() - t.getStart()) , h);
+			rect(map(t.getStart(), 1, 31, chartBorder, width), vertGap, map((t.getEnd() - t.getStart()), 1, 31, chartBorder, width), h);
+			
 			vertGap += 30;
 		}
 
-		//using map to display chart
-		/* for (int i = 0; i < chartBorder; i++)
+		//for loop to display the numbers above the Gantt chart
+		for (int i = 1; i < 31; i++)
 		{
-			float ganttMap = map(i, 30, chartBorder, width);
+			float ganttMap = map(i, 1, 31, chartBorder, width);
 
-		} */
+			text(i, ganttMap, 10);	
+		}
 	}//end displayTasks
 	
 	public void mousePressed()
